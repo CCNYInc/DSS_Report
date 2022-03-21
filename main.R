@@ -2,11 +2,11 @@ library(tidyverse)
 library(DBI)
 library(odbc)
 
-output_name = 'DSS Financial January 2022.xlsx'
+output_name = 'DSS Financial February 2022.xlsx'
 con <- DBI::dbConnect(odbc::odbc(), Driver = "SQL Server", Server = "ccnyss2", Database = "Invoice", Trusted_Connection = "True")
 order <-c(1,2,3,4,5,6,7,16,17,8,9,10,11,12,13,14,15)
 a <- con %>%  dbGetQuery("
-DECLARE @StartDate DATE = '2022-01-01', @EndDate DATE = '2022-01-31';
+DECLARE @StartDate DATE = '2022-02-01', @EndDate DATE = '2022-02-28';
 
 SELECT DISTINCT
 	COALESCE(T.YID, NULL) AS [Youth ID (Fidelity EHR)],
